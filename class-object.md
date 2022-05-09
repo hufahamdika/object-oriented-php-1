@@ -1,6 +1,6 @@
 # Class dan Object
 
-[Kembali](readme.md)
+[Kembali](README.md)
 
 ## Latar belakang topik
 Dalam pemograman berbasis objek, kita akan memetakan masalah kedalam class, serta memecah masalah kedalam bagian class – class, sehingga program akan terbagi menjadi bagian – bagian yang lebih kecil, didalam class akan terdiri method atau fungsi, serta terdapat property atau attribute, nah dari class nanti kita bisa membuat object dari class yang telah dibuat.
