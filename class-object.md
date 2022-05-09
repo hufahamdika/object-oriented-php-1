@@ -16,10 +16,11 @@ Class adalah template, cetakan yang mewakili entitas dunia nyata, dimana pada Cl
 
 ```php
 <?php
-
+//Membuat class 'Employee'
 class Employee{
-    public $name;
+    public $name; //Menambahkan atribut nama
     
+    //Menambahkan method set_name dan get_name
     function set_name($name) {
         $this->name = $name;
     }
@@ -49,9 +50,9 @@ class Employee{
     }
 }
 
-$employee1 = new Employee();
-$employee1->set_name("Steven");
-echo $employee1->get_name();
+$employee1 = new Employee(); //Buat object baru
+$employee1->set_name("Steven"); //set_name object baru tersebut
+echo $employee1->get_name(); //get_name dan print menggunakan 'echo'
 echo "\n";
 
 //Bisa juga ditulis dengan syntax dibawah ini
@@ -81,8 +82,8 @@ class Employee{
 
 $employee3 = new Employee();
 $employee3->set_name("Smith");
-$funcGetNama = "get_name";
-echo $employee3->{$funcGetNama}();
+$funcGetNama = "get_name"; //Membuat object baru khusus untuk menjalankan get_name
+echo $employee3->{$funcGetNama}(); //Print object baru tersebut
 echo "\n";
 ```
 #### Cara Ketiga
@@ -113,6 +114,7 @@ class Employee{
     }
 }
 
+//Menambahkan fungsi untuk mengubah variabel suatu object
 function change_name($emp){
     $emp->name = "Smith";
 }
