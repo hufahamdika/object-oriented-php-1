@@ -1,6 +1,6 @@
 # object-oriented-php-1
 
-### Latar belakang topik
+## Latar belakang topik
 Dalam pemograman berbasis objek, kita akan memetakan masalah kedalam class, serta memecah masalah kedalam bagian class – class, sehingga program akan terbagi menjadi bagian – bagian yang lebih kecil, didalam class akan terdiri method atau fungsi, serta terdapat property atau attribute, nah dari class nanti kita bisa membuat object dari class yang telah dibuat.
 
 Misalkan pada karyawan yang ada di suatu kantor, terdapat Steven, Rudolf, Smith, dan Kevin yang merupakan karyawan yang ada di kantor tersebut. Mereka antara satu sama lain memiliki kemiripan berupa sama-sama karyawan namun memiliki karakteristik atau ciri yang berbeda antara satu sama lain. Sehingga, mereka bisa disebut sebagai Objek. Salah satu karakteristik berbeda yang mereka miliki ialah nama. Dimana antar karyawan yang ada memiliki nama yang berbeda, nama ini bisa disebut dengan Atribute atau Property.
