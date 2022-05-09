@@ -1,15 +1,15 @@
-## Class dan Object
-### Latar belakang topik
+# Class dan Object
+## Latar belakang topik
 Dalam pemograman berbasis objek, kita akan memetakan masalah kedalam class, serta memecah masalah kedalam bagian class – class, sehingga program akan terbagi menjadi bagian – bagian yang lebih kecil, didalam class akan terdiri method atau fungsi, serta terdapat property atau attribute, nah dari class nanti kita bisa membuat object dari class yang telah dibuat.
 
 Misalkan pada karyawan yang ada di suatu kantor, terdapat Steven, Rudolf, Smith, dan Kevin yang merupakan karyawan yang ada di kantor tersebut. Mereka antara satu sama lain memiliki kemiripan berupa sama-sama karyawan namun memiliki karakteristik atau ciri yang berbeda antara satu sama lain. Sehingga, mereka bisa disebut sebagai Objek. Salah satu karakteristik berbeda yang mereka miliki ialah nama. Dimana antar karyawan yang ada memiliki nama yang berbeda, nama ini bisa disebut dengan Atribute atau Property.
 
 Kemiripan yang ada pada objek Steven dan objek Rudolf ialah sama-sama merupakan entitas karyawan maka bisa dibuat Class yang disebut dengan Class Employee. Sehingga pada Class Employee ini, terdapat 4 objek, yaitu employee1 yaitu Steven, employee2 yaitu Rudolf, employee3 yaitu Smith, dan employee4 yaitu Kevin. Maka bisa dibilang kalau, Class lah yang mencetak objek-objek.
 
-### Pengantar Class dan Object
+## Pengantar Class dan Object
 Class adalah template, cetakan yang mewakili entitas dunia nyata, dimana pada Class dibutuhkan Atribute dan Method agar dapat menghasilkan suatu Object. Maka, Class adalah kerangka dasar yang harus dibuat terlebih dahulu sebelum membuat suatu Object. Object merupakan reference types, sehingga apabila object di-passing ke sebuah fungsi, maka value dari attribute nya dapat berubah.
 
-#### Membuat Class
+### Membuat Class
 
 ```php
 <?php
@@ -27,9 +27,9 @@ class Employee{
 }
 ```
 
-#### Metode Print di php
+### Metode Print di php
 
-##### Cara Pertama
+#### Cara Pertama
 Membuat class dan instalasi object, lalu menampilkan hasilnya dengan `echo`
 ```php
 <?php
@@ -59,7 +59,7 @@ echo $employee2->{"get_name"}();
 echo "\n";
 ```
 
-##### Cara Kedua
+#### Cara Kedua
 Membuat object baru untuk menjalankan get_name, lalu menampilkan hasilnya
 ```php
 <?php
@@ -82,7 +82,7 @@ $funcGetNama = "get_name";
 echo $employee3->{$funcGetNama}();
 echo "\n";
 ```
-##### Cara Ketiga
+#### Cara Ketiga
 Tanpa menggunakan set_name dan get_name
 ```php
 <?php
@@ -95,7 +95,7 @@ $employee4-> name = "Kevin"; //set nama
 echo $employee4->name; //print nama
 echo "\n";
 ```
-#### Mengubah Variabel
+### Mengubah Variabel
 ```php
 <?php
 class Employee{
