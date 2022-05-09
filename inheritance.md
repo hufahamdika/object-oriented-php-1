@@ -14,9 +14,7 @@ Inheritance merupakan sebuah konsep dimana sebuah class dapat menurunkan semua a
 
 ## Langkah-langkah tutorial
 
-### Langkah pertama
-
-Buat parent class `Employee`. 
+### Langkah pertama : Buat parent class `Employee` beserta functionnya
 
 ```php
 <?php
@@ -48,51 +46,19 @@ class Employee {
 ?>
 ```
 
-### Langkah kedua
-
-Buat child class `HourlyEmployee` dengan menambahkan extends dan nama parent class di samping nama class nya.
+### Langkah kedua : Buat child class `HourlyEmployee` beserta metodenya
 
 ```php
 <?php
 
+// Buat child class `HourlyEmployee` dengan menambahkan extends dan nama parent class di samping nama class nya.
 class HourlyEmployee extends Employee{
-  
-  ...
-  
-}
 
-?>
-```
-
-### Langkah ketiga
-
-Tambahkan atribut `hours` dan `salaryperhours` pada child class `HourlyEmployee`. 
-
-```php
-<?php
-
-class HourlyEmployee extends Employee{
+  // Tambahkan atribut `hours` dan `salaryperhours` pada child class `HourlyEmployee`. 
   private $hours;
-  private $salaryperhours;
-
-  ...
+  private $salaryperhours;  
   
-}
-
-?>
-```
-
-### Langkah keempat
-
-Tambahkan method `set_hours` dan `get_hours` pada child class `HourlyEmployee`. 
-
-```php
-<?php
-
-class HourlyEmployee extends Employee{
-  private $hours;
-  private $salaryperhours;
-
+  // Tambahkan method `set_hours` dan `get_hours` pada child class `HourlyEmployee`.
   function set_hours($hours) {
     $this->hours = $hours;
   }
@@ -100,33 +66,8 @@ class HourlyEmployee extends Employee{
   function get_hours() {
     return $this->hours;
   }
-
-  ...
   
-}
-
-?>
-```
-
-### Langkah kelima
-
-Tambahkan method `set_salary` yang sudah di-override pada child class `HourlyEmployee`. 
-
-```php
-<?php
-
-class HourlyEmployee extends Employee{
-  private $hours;
-  private $salaryperhours;
-
-  function set_hours($hours) {
-    $this->hours = $hours;
-  }
-
-  function get_hours() {
-    return $this->hours;
-  }
-
+  // Tambahkan method `set_salary` yang sudah di-override pada child class `HourlyEmployee`. 
   // override
   function set_salary($salaryperhours) {
     $this->salaryperhours = $salaryperhours;
@@ -140,60 +81,102 @@ class HourlyEmployee extends Employee{
 ?>
 ```
 
-### Langkah keenam
 
-Inisialisasi object `employee` dengan child class `HourlyEmployee`.
+### Langkah ketiga : Inisialisasi object
 
 ```php
 <?php
 
+// Inisialisasi object `employee` dengan child class `HourlyEmployee`.
 $employee = new HourlyEmployee();
 
+// Menggunakan method `set_name` dan atribut `name` yang diturunkan parent class.
+$employee->set_name("Steven");
+echo $employee->name;
+echo "\n";
+// Object dari child class dapat mengakses atribut dan method public dari parent class.
+
+// Menggunakan method `set_hours` dan `get_hours` serta atribut `hours` melalui kedua method yang dimiliki child class tersebut.
+$employee->set_hours(16);
+echo $employee->get_hours();
+echo "\n";
+// Object dari child class dapat mengakses method yang dimiliki child class sendiri beserta atributnya secara tidak langsung.
+
+// Coba gunakan method parent class yang telah di-override oleh child class.
+$employee->set_salary(0.5);
+/* Object dari child class dapat mengakses method yang telah di-override dari parent class
+ * dan method protected get_salary dari parent class secara tidak langsung.
+ *
+ * Output yang diperoleh dari langkah ini adalah `8`,
+ * yang merupakan hasil perkalian salaryperhours yang diinputkan dan hours yang telah di-set sebelumnya.
+ *
+ * Hal ini menunjukkan bahwa object dengan child class menggunakan method yang telah di-override,
+ * bukan method asli dari parent class tersebut.
+ */
 ?>
 ```
 
-### Langkah ketujuh
-
-Coba gunakan method `set_name` dan atribut `name` yang diturunkan parent class.
+### Source code akhir
 
 ```php
 <?php
+
+class Employee {
+  public $name;
+  protected $salary;
+
+  function set_name($name) {
+    $this->name = $name;
+  }
+
+  function get_name() {
+    return $this->name;
+  }
+
+  function set_salary($salary) {
+    $this->salary = $salary;
+    echo $this->get_salary();
+    echo "\n";
+  }
+
+  protected function get_salary() {
+    return $this->salary;
+  }
+  
+}
+
+class HourlyEmployee extends Employee{
+  private $hours;
+  private $salaryperhours;  
+  
+  function set_hours($hours) {
+    $this->hours = $hours;
+  }
+
+  function get_hours() {
+    return $this->hours;
+  }
+   
+  // override
+  function set_salary($salaryperhours) {
+    $this->salaryperhours = $salaryperhours;
+    $this->salary = $this->hours * $this->salaryperhours;
+    echo $this->get_salary();
+    echo "\n";
+  }
+  
+}
+
+$employee = new HourlyEmployee();
 
 $employee->set_name("Steven");
 echo $employee->name;
 echo "\n";
 
-?>
-```
-
-Pada langkah ini, object dari child class dapat mengakses atribut dan method public dari parent class.
-
-### Langkah kedelapan
-
-Coba gunakan method `set_hours` dan `get_hours` serta atribut `hours` melalui kedua method yang dimiliki child class tersebut.
-
-```php
-<?php
-
 $employee->set_hours(16);
 echo $employee->get_hours();
 echo "\n";
 
-?>
-```
-
-Pada langkah ini, object dari child class dapat mengakses method yang dimiliki child class sendiri beserta atributnya secara tidak langsung.
-
-### Langkah kesembilan
-
-Coba gunakan method parent class yang telah di-override oleh child class.
-
-```php
-<?php
-
 $employee->set_salary(0.5);
-
 ?>
 ```
-
-Pada langkah ini, object dari child class dapat mengakses method yang telah di-override dari parent class dan method protected get_salary dari parent class secara tidak langsung. Output yang diperoleh dari langkah ini adalah `8`, yang merupakan hasil perkalian salaryperhours yang diinputkan dan hours yang telah di-set sebelumnya. Hal ini menunjukkan bahwa object dengan child class menggunakan method yang telah di-override, bukan method asli dari parent class tersebut.
