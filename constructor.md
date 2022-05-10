@@ -9,67 +9,11 @@ Dalam Pemrograman Berbasis Objek, setelah membuat `Class`, maka nantinya kita bi
 
 `Constructor` ialah fungsi khusus dimana dia akan mengeksekusi object pada saat object di instansiasi, sedangkan `Destructor` merupakan kebalikan dari Constructor, fungsi ini akan berjalan ketika semua kondisi yang diinginkan telah berjalan (fungsi yang berjalan terakhir). `Constructor` dan `Destructor` tidak harus ada didalam suatu Class. Method constructor biasanya berisi pemberian nilai default dari masing-masing properties (variabel). Untuk membuat constructor, cukup dengan mendefinisikan suatu fungsi dengan nama `__construct()`. Begitupun dengan destructor, fungsi ini bisa didefinisikan dengan nama `__destruct()`.
 
-## Langkah-langkah tutorial Constructor tanpa parameter
+## Metode Constructor tanpa Parameter
 
-### Langkah pertama
+### Membuat Class
 
-Membuat `Class Employee` dengan atribut name, position
-
-```php
-<?php
-class Employee {
-        public $name;
-        public $position;
-}
-```
-
-### Langkah kedua
-
-Menambahkan method construct di `Class Employee`
-
-```php
-<?php
-class Employee {
-        public $name;
-        public $position;
-        function __construct(){
-            echo "\nSelamat datang di kantor!\n";
-        }
-}
-
-```
-
-### Langkah ketiga
-
-Menambahkan method setter dan getter yang perlu di `Class Employee`
-
-```php
-<?php
-class Employee {
-        public $name;
-        public $position;
-        function __construct(){
-            echo "\nSelamat datang di kantor!\n";
-        }
-        function set_name($name){
-            $this->name = $name;
-        }
-        function get_name(){
-            return $this->name;
-        }
-        function set_position($position){
-            $this->position = $position;
-        }
-        function get_position(){
-            return $this->position;
-        }
-    }
-
-```
-
-### Langkah keempat
-
-Menambahkan method destructor di `Class Employee`
+Membuat `Class Employee` dengan constructor dan destructor
 
 ```php
 <?php
@@ -98,11 +42,49 @@ class Employee {
 
 ```
 
-### Langkah kelima
+Metode `__construct` adalah sebuah constructor. Constructor disini dilakukan tanpa menggunakan parameter. Pada `Class Employee`, constructor hanya akan melakukan print. Constructor akan dijalankan setiap sebuah `object` di instansiasi
+```php
+function __construct(){
+    echo "\nSelamat datang di kantor!\n";
+}
+```
 
-Menginstansiasi object dimana akan menjalankan fungsi constructor. 
+Metode `__destruct` adalah sebuah destructor. Pada `Class Employee`, destructor hanya akan melakukan print. Destructor akan dijalankan setiap sebuah `object` dihapuskan atau saat sebuah script telah selesai dijalankan
+```php
+function __destruct(){
+    echo "Sampai jumpa lagi!\n\n";
+}
+```
+
+### Instansiasi Object
+
+Menginstansiasi `object` akan langsung menjalankan fungsi constructor. 
 
 ```php
+<?php
+class Employee {
+        public $name;
+        public $position;
+        function __construct(){
+            echo "\nSelamat datang di kantor!\n";
+        }
+        function set_name($name){
+            $this->name = $name;
+        }
+        function get_name(){
+            return $this->name;
+        }
+        function set_position($position){
+            $this->position = $position;
+        }
+        function get_position(){
+            return $this->position;
+        }
+        function __destruct(){
+            echo "Sampai jumpa lagi!\n\n";
+        }
+    }
+
 $employee1 = new Employee();
 ```
 
@@ -110,14 +92,40 @@ Hasilnya
 
 ![image](https://user-images.githubusercontent.com/80946219/118929701-0cab6680-b96f-11eb-8f0e-c69ea1772839.png)
 
-### Langkah keenam
+Dapat dilihat pada hasil diatas bahwa constructor berjalan saat `object` di instansiasi dan destructor berjalan saat script selesai
+
+### Instansiasi Object dengan Fungsi
 
 Memanggil fungsi set_nama dan get_nama untuk menampilkan hasilnya.
 
 ```php
+<?php
+class Employee {
+        public $name;
+        public $position;
+        function __construct(){
+            echo "\nSelamat datang di kantor!\n";
+        }
+        function set_name($name){
+            $this->name = $name;
+        }
+        function get_name(){
+            return $this->name;
+        }
+        function set_position($position){
+            $this->position = $position;
+        }
+        function get_position(){
+            return $this->position;
+        }
+        function __destruct(){
+            echo "Sampai jumpa lagi!\n\n";
+        }
+    }
+
 $employee1 = new Employee();
-$employee1->set_name("Steven");
-$employee1->set_position("Manager");
+$employee1->set_name("Marcus");
+$employee1->set_position("CEO");
 echo "Karyawan ini bernama ".$employee1->get_name().", dia merupakan seorang ".$employee1->get_position().".\n";
 ```
 
@@ -125,86 +133,106 @@ Hasilnya
 
 ![image](https://user-images.githubusercontent.com/80946219/118930544-12ee1280-b970-11eb-9c23-150c42338526.png)
 
+Dapat dilihat pada hasil diatas bahwa constructor berjalan saat `object` di instansiasi. Selanjutnya akan dilakukan print sesuai dengan script dan terakhir destructor berjalan saat script selesai
 
-## Langkah-langkah tutorial Constructor dengan parameter
 
-### Langkah pertama
+## Metode Constructor dengan Parameter
 
-Membuat `Class Employee` dengan method construct, ketika menggunakan constructor tidak apa-apa jika tidak mendefinisikan atributnya sebelum fungsi constructnya. Jika menggunakan construct, maka kita tidak perlu lagi menggunakan set_name dan get_name.
+### Membuat Class
+
+Membuat `Class Employee` dengan constructor yang menggunakan parameter dan destructor diakhir. Ketika menggunakan constructor tidak apa-apa jika tidak mendefinisikan atributnya sebelum fungsi constructnya.
 
 ```php
 <?php
-class Employee {
-  //method construct didalamnya terdapat parameter name dan position
+class Employee{
   function __construct($name, $position) { 
     $this->name = $name;
     $this->position = $position;
   }
-}
-
-```
-
-### Langkah kedua
-
-Menambahkan method untuk mencetak.
-
-```php
-<?php
-class Employee{
-  function __construct($name, $position) { 
-    $this->name = $name;
-    $this->position = $position
-  }
   
   function cetak(){
     return "Karyawan ini bernama ".$this->name.", dia merupakan seorang ".$this->position.".";
   }
-}
-```
 
-### Langkah ketiga
-
-Menambahkan fungsi destructor yang nantinya akan berjalan ketika semua method telah dieksekusi.
-
-```php
-<?php
-class Employee{
-  function __construct($name, $position) { 
-    $this->name = $name;
-    $this->position = $position
-  }
-  
-  function cetak(){
-    return "Karyawan ini bernama ".$this->name.", dia merupakan seorang ".$this->position.".";
-  }
-  
   function __destruct(){
     echo "\nSampai jumpa lagi!\n\n";
   }
 }
 ```
 
-### Langkah keempat
-
-Menginstansiasi object dengan parameter nama dan posisi, disini akan menjalankan fungsi constructor. Dimana disini akan langsung menyimpan steven sebagai nama dan manager sebagai posisinya. 
+Pada `Class Employee`, constructor akan secara langsung melakukan set name dan position sehingga saat `object` di instansiasi sehingga `object` akan langsung memiliki name dan position
 
 ```php
-$employee1 = new Employee("Steven", "Manager");
+function __construct($name, $position) { 
+  $this->name = $name;
+  $this->position = $position;
+}
+```
+
+Sama seperti sebelumnya, kita akan membuat juga sebuah destructor yang akan dijalankan setiap sebuah `object` dihapuskan atau saat sebuah script telah selesai dijalankan
+```php
+function __destruct(){
+    echo "Sampai jumpa lagi!\n\n";
+}
+```
+
+### Instansiasi Object
+
+Menginstansiasi object dengan parameter nama dan posisi disini akan secara langsung menjalankan fungsi constructor. Disini `object` akan langsung menyimpan Marcus sebagai name dan CEO sebagai position
+
+```php
+<?php
+class Employee{
+  function __construct($name, $position) { 
+    $this->name = $name;
+    $this->position = $position;
+  }
+  
+  function cetak(){
+    return "Karyawan ini bernama ".$this->name.", dia merupakan seorang ".$this->position.".";
+  }
+
+  function __destruct(){
+    echo "\nSampai jumpa lagi!\n\n";
+  }
+}
+
+$employee1 = new Employee("Marcus", "CEO");
 ```
 
 Maka output yang dihasilkan 
 
 ![keempatt](https://user-images.githubusercontent.com/80946219/118925836-95270880-b969-11eb-95ef-7685ae800df9.png)
 
-### Langkah kelima
+Dapat dilihat pada hasil diatas apabila script hanya akan melakukan print pada bagian destructor. Hal ini dikarenakan tidak ada perintah `echo` pada constructor serta fungsi `cetak` tidak dipanggil
 
-Memanggil fungsi cetak.
+### Instansiasi Object dengan Fungsi
+
+Memanggil fungsi cetak untuk memperlihatkan hasil name dan position `object`
 
 ```php
-$employee1 = new Employee("Steven", "Manager");
+<?php
+class Employee{
+  function __construct($name, $position) { 
+    $this->name = $name;
+    $this->position = $position;
+  }
+  
+  function cetak(){
+    return "Karyawan ini bernama ".$this->name.", dia merupakan seorang ".$this->position.".";
+  }
+
+  function __destruct(){
+    echo "\nSampai jumpa lagi!\n\n";
+  }
+}
+
+$employee1 = new Employee("Marcus", "CEO");
 echo $employee1->cetak();
 ```
 
 Output yang dihasilkan
 
 ![limaaaa](https://user-images.githubusercontent.com/80946219/118926013-d61f1d00-b969-11eb-85f5-01b7365391fc.png)
+
+Dapat dilihat pada hasil diatas apabila name dan position yang disimpan adalah Marcus dan CEO sesuai dengan name dan position yang disimpan saat `object` di instansiasi. Pada saat script berakhir, seperti biasa destructor akan ikut dijalankan
