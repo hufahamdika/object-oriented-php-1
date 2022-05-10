@@ -1,6 +1,6 @@
 # Inheritance
 
-[Kembali](readme.md)
+[Kembali](README.md)
 
 ## Latar belakang topik
 
