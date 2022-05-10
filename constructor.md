@@ -90,7 +90,7 @@ $employee1 = new Employee();
 
 Hasilnya 
 
-![image](https://user-images.githubusercontent.com/80946219/118929701-0cab6680-b96f-11eb-8f0e-c69ea1772839.png)
+![image](https://user-images.githubusercontent.com/100663573/167545313-f96885f7-9a47-44a1-b43c-693ea5b7ec75.png)
 
 Dapat dilihat pada hasil diatas bahwa constructor berjalan saat `object` di instansiasi dan destructor berjalan saat script selesai
 
@@ -131,7 +131,7 @@ echo "Karyawan ini bernama ".$employee1->get_name().", dia merupakan seorang ".$
 
 Hasilnya 
 
-![image](https://user-images.githubusercontent.com/80946219/118930544-12ee1280-b970-11eb-9c23-150c42338526.png)
+![image](https://user-images.githubusercontent.com/100663573/167545814-2350d7bf-3211-41c4-9808-16025e71ea37.png)
 
 Dapat dilihat pada hasil diatas bahwa constructor berjalan saat `object` di instansiasi. Selanjutnya akan dilakukan print sesuai dengan script dan terakhir destructor berjalan saat script selesai
 
@@ -202,7 +202,7 @@ $employee1 = new Employee("Marcus", "CEO");
 
 Maka output yang dihasilkan 
 
-![keempatt](https://user-images.githubusercontent.com/80946219/118925836-95270880-b969-11eb-95ef-7685ae800df9.png)
+![image](https://user-images.githubusercontent.com/100663573/167545554-98891d85-17ac-4656-8b18-a7c577cc23e8.png)
 
 Dapat dilihat pada hasil diatas apabila script hanya akan melakukan print pada bagian destructor. Hal ini dikarenakan tidak ada perintah `echo` pada constructor serta fungsi `cetak` tidak dipanggil
 
@@ -233,6 +233,6 @@ echo $employee1->cetak();
 
 Output yang dihasilkan
 
-![limaaaa](https://user-images.githubusercontent.com/80946219/118926013-d61f1d00-b969-11eb-85f5-01b7365391fc.png)
+![image](https://user-images.githubusercontent.com/100663573/167545756-a0144ce8-cea1-41a7-89ca-b13fda82cdb8.png)
 
 Dapat dilihat pada hasil diatas apabila name dan position yang disimpan adalah Marcus dan CEO sesuai dengan name dan position yang disimpan saat `object` di instansiasi. Pada saat script berakhir, seperti biasa destructor akan ikut dijalankan
