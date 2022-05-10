@@ -1,6 +1,6 @@
 # Constructor
 
-[Kembali](readme.md)
+[Kembali](README.md)
 
 ## Latar belakang topik
 Dalam Pemrograman Berbasis Objek, setelah membuat `Class`, maka nantinya kita bisa menghasilkan `Object`. Proses menghasilkan / mencetak `objek` dari `class` ini disebut dengan `Instansiasi (Instantiation)`. Biasanya setelah melakukan instansiasi inilah kita bisa melakukan eksekusi pada object, misalnya dengan menggunakan setter (set_name, etc) lalu getter (get_name, etc). Namun terdapat cara dimana ketika melakukan instansiasi maka setelahnya tidak perlu melakukan setter ataupun getter untuk mengeksekusi, karena saat di instansiasi, object akan langsung dieksekusi caranya ialah dengan menggunakan fungsi `Constructor`. Selain constructor, terdapat yang namanya fungsi `Destructor` yang sifatnya langsung dijalankan jika semua kondisi yang diinginkan telah terpenuhi.
