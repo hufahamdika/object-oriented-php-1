@@ -1,6 +1,6 @@
 # Closure
 
-[Kembali](readme.md)
+[Kembali](README.md)
 
 ## Latar belakang topik
 
@@ -10,11 +10,11 @@ Terkadang kita ingin menulis dan memanggil fungsi dengan mudah, terutama dalam f
 
 Closure atau anonymous function merupakan fungsi yang tidak memiliki nama. Untuk memanggilnya secara individu, kita dapat menggunakan variabel yang merujuk pada closure tersebut. Seperti fungsi pada umumnya, closure juga dapat memiliki parameter dan me-return sebuah nilai. Pada umumnya, closure digunakan sebagai nilai parameter callable. 
 
-## Langkah-langkah tutorial
+## Penerapan Closure
 
-### Langkah pertama
+### Closure tanpa Parameter
 
-Buat variabel yang merujuk pada closure tanpa parameter.
+Cara pertama dalam penggunaan closure adalah dengan menggunakan variable yang merujuk pada closure tanpa parameter
 
 ```php
 <?php
@@ -22,56 +22,57 @@ Buat variabel yang merujuk pada closure tanpa parameter.
 $print_message1 = function(){
   echo "Hello!\n";
 };
-
-?>
-```
-
-### Langkah kedua
-
-Panggil closure dengan nama variabel yang dibuat diikuti dengan tanda kurung.
-
-```php
-<?php
-
 $print_message1();
 
 ?>
 ```
 
-Pada langkah ini, output yang dihasilkan adalah `Hello!`.
+Pada tahap pertama, diperlukan sebuah variable yang merujuk pada closure
 
-### Langkah ketiga
+```
+$print_message1 = function(){
+  echo "Hello!\n";
+};
+```
 
-Buat variabel yang merujuk pada closure dengan parameter dan return value.
+Kemudian dilakukan pemanggilan variable tadi diikuti dengant tanda kurung
 
+```
+$print_message1();
+```
+
+Pada cara ini, output yang dihasilkan adalah `Hello!`.
+
+### Closure dengan Parameter
+
+Cara selanjutnya adalah dengam menggunakan variable yang merujuk kepada closure dengan parameter.
 ```php
 <?php
 
 $get_message = function($name){
   return "Hello, " . $name . "!\n";
 };
-
-?>
-```
-
-### Langkah keempat
-
-Panggil closure dengan nama variabel yang dibuat diikuti dengan tanda kurung dan parameter yang ingin diinputkan.
-
-```php
-<?php
-
 echo $get_message("Steven");
 
 ?>
 ```
+Sama seperti sebelumnya, variable dibuat terlebih dahulu yang merujuk pada closure dengan parameter dan return value
+```
+$get_message = function($name){
+  return "Hello, " . $name . "!\n";
+};
+```
 
-Pada langkah ini, output yang dihasilkan adalah `Hello, Steven!`.
+Kemudian dilakukan pemanggilan variable tadi diikuti dengan parameter yang diinputkan
+```
+echo $get_message("Steven");
+```
 
-### Langkah kelima
+Pada cara ini, output yang dihasilkan adalah `Hello, Steven!`.
 
-Buat variabel message dan variabel yang merujuk pada closure tanpa parameter dan dengan keyword use agar closure dapat menggunakan variabel di luar closure, bukan dilewatkan dari parameter.
+### Closure dengan Keyword Use
 
+Cara lain dalam penggunaan closure adalah dengan menggunakan metode keyword use. .  
 ```php
 <?php
 
@@ -81,27 +82,37 @@ $print_message2 = function() use ($message){
   echo "\n";
 };
 
-?>
-```
-
-### Langkah keenam
-
-Panggil closure dengan nama variabel yang dibuat diikuti dengan tanda kurung.
-
-```php
-<?php
-
 $print_message2();
 
 ?>
 ```
+Sebuah variable dibuat terlebih dahulu agar dapat digunakan oleh closure
+```
+$message = "Hello!";
+```
 
-Pada langkah ini, output yang dihasilkan adalah `Hello!`.
+Selanjutnya, dibuatlah sebuah variable yang merujuk kepada closure tanpa parameter dengan keyword use agar closure dapat menggunakan variable di luar closure
+```
+$print_message2 = function() use ($message){
+  echo $message;
+  echo "\n";
+};
+```
 
-### Langkah ketujuh
+Setelah itu, seperti biasa dilakukan pemanggilan variable diikuti dengan tanda kurung
+```
+$print_message2();
+```
 
-Buat associative array (array dengan named key) `fruits` dan panggil fungsi `array_walk` dengan parameter fruits dan closure. Fungsi array_walk merupakan fungsi yang menjalankan setiap elemen array dalam fungsi yang ditentukan pengguna. Value dan key array adalah parameter dalam fungsi dan dalam pengimplementasian array_walk, value dan key tidak dapat diubah urutannya, namun untuk mengganti nama variabelnya diperbolehkan.
+Pada cara ini, output yang dihasilkan adalah `Hello!`.
 
+### Closure dengan Array Walk
+
+Closure juga dapat digunakan dengan fungsi `array_walk`. Fungsi array_walk merupakan fungsi yang menjalankan setiap elemen array dalam fungsi yang ditentukan pengguna. Value dan key array adalah parameter dalam fungsi dan dalam pengimplementasian array_walk, value dan key tidak dapat diubah urutannya, namun untuk mengganti nama variabelnya diperbolehkan. 
+
+#### Tanpa Menggunakan Variable
+
+Closure dapat digunakan dengan fungsi array walk secara langsung tanpa menggunakan variable
 ```php
 <?php
 
@@ -114,14 +125,26 @@ array_walk($fruits, function($value, $key) {
 ?>
 ```
 
-Pada langkah ini, output yang dihasilkan adalah sebagai berikut.
+Pada cara ini, langkah pertama adalah melakukan instansiasi associative array (array dengan named key) `fruits`
+```
+$fruits = ["a" => "Apel", "b" => "Belimbing", "c" => "Cerry"];
+```
+
+Lalu dilakukan pemanggilan fungsi `arraw_walk` dengan parameter associative array sebelumnya yaitu `fruits` dan closure
+```
+array_walk($fruits, function($value, $key) {
+ echo $key . ". "  . $value . "\n";
+});
+```
+
+Pada cara ini, output yang dihasilkan adalah sebagai berikut.
 ```
 a. Apel
 b. Belimbing
 c. Cerry
 ```
 
-### Langkah kedelapan
+#### Dengan Variable
 
 Walaupun kita dapat menulis closure secara langsung dalam parameter fungsi array_walk, kita juga dapat membuat variabel yang menunjuk pada closure dan memanggil nama variabel tersebut dari parameter fungsi array_walk.
 
@@ -139,9 +162,9 @@ array_walk($fruits, $print_fruits);
 ?>
 ```
 
-Output yang dihasilkan pada langkah ini akan sama dengan output pada langkah ketujuh.
+Output yang dihasilkan akan sama seperti sebelumnya
 
-### Langkah kesembilan
+### Menggunakan Parameter Lain
 
 Selain value dan key, kita juga dapat passing parameter lain, seperti associative array fruits. Namun, urutannya harus tetap, value diletakkan di awal dan diikuti dengan key.
 
@@ -158,7 +181,7 @@ array_walk($fruits, function($value, $key, $fruits) {
 ?>
 ```
 
-Pada langkah ini, output yang dihasilkan adalah sebagai berikut.
+Pada cara ini, output yang dihasilkan adalah sebagai berikut.
 
 ```
 a. Apel
